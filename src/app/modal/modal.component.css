@@ -1,0 +1,25 @@
+.modal { 
+  background: rgba(0, 0, 0, 0.5);  
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-dialog {
+  max-width: 500px;
+  margin: auto;
+}
+
+.modal-content {
+  border: none;
+  border-radius: 8px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}

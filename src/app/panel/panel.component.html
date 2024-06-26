@@ -1,0 +1,69 @@
+<form [formGroup] = "formularioPanel">
+  <div class="container">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <button type="button" class="botonInfoPaginas" (click)='abrirModal("paginas")'>
+          <i class="bi bi-info-circle"></i>
+        </button>             
+        <label for="paginas">Número de páginas:</label>
+        <button class="botonRestar" (click)="restar('paginas')" >
+          <i class="bi bi-dash-circle"></i>
+        </button>
+        <input type="number" formControlName="paginas" value="1"/> 
+        <button class="botonSumar" (click)="sumar('paginas')" >
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </div>               
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <button type="button" class="botonInfoIdiomas" (click)='abrirModal("idiomas")'>
+          <i class="bi bi-info-circle"></i>
+        </button>
+        <label for="idiomas">Número de idiomas:</label>      
+        <button class="botonRestar" (click)="restar('idiomas') " >
+          <i class="bi bi-dash-circle"></i>
+        </button>
+        <input type="number" formControlName="idiomas" value="1"> 
+        <button class="botonSumar" (click)="sumar('idiomas')" >
+          <i class="bi bi-plus-circle"></i>
+        </button>
+      </div>      
+    </div>  
+  </div>
+  @if(formularioPanel.get('paginas')?.value < 1){
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <p>El número de páginas ha de ser mayor a 1</p>
+      </div>            
+    </div>
+  }   
+  @if(formularioPanel.get('idiomas')?.value < 1){
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <p>El número de idiomas ha de ser mayor a 1</p>
+      </div>            
+    </div>
+  } 
+  <app-modal #modalComponent></app-modal>  
+</form>
+ 
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

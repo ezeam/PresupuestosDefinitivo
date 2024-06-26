@@ -1,0 +1,135 @@
+<form [formGroup] = "formularioHome">
+  <div class="container">
+    <div class="row d-flex justify-content-center ">
+      <div class="divTitulo col-12 d-flex justify-content-center mt-5 " >
+        <img src="assets/fondo1.jpg" alt="img fondo" class="fotoTitulo img-fluid rounded bg"/>
+        <h1 style="position: relative; z-index: 1; color: black; margin: auto;">Consigue la mejor calidad</h1>
+      </div>   
+    </div>    
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-2">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                  <div class="row justify-content-center justify-content-md-start">
+                    <h5 class="card-title">SEO</h5>
+                  </div>
+                  <div class="row justify-content-center justify-content-md-start">
+                    <h6 class="card-subtitle mb-2 text-muted">Programación de una web responsive completa</h6>
+                  </div>  
+                </div>
+                
+                <div class="col-md-4 d-flex justify-content-md-center justify-content-center align-items-center">
+                  <h3 class="card-text mx-5 my-4 fw-bold">{{precioSeo}}€</h3>
+                </div>
+                <div class="col-md-4 d-flex justify-content-md-end justify-content-center align-items-center">
+                  <div>
+                    <p class="mb-0">
+                      <input type="checkbox" formControlName="seo">Añadir
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-2">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                  <div class="row justify-content-center justify-content-md-start">
+                    <h5 class="card-title">Ads</h5>
+                  </div>
+                  <div class="row justify-content-center justify-content-md-start">
+                    <h6 class="card-subtitle mb-2 text-muted">Programación de una web responsive completa</h6>
+                  </div>  
+                </div>
+                
+                <div class="col-md-4 d-flex justify-content-md-center justify-content-center align-items-center">
+                  <h3 class="card-text mx-5 my-4 fw-bold">{{precioAds}}€</h3>
+                </div>
+                <div class="col-md-4 d-flex justify-content-md-end justify-content-center align-items-center">
+                  <div>
+                    <p class="mb-0">
+                      <input type="checkbox" formControlName="ads">Añadir
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card mt-2">
+            <div class="card-body">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                  <div class="row justify-content-center justify-content-md-start">
+                    <h5 class="card-title">Web</h5>
+                  </div>
+                  <div class="row justify-content-center justify-content-md-start">
+                    <h6 class="card-subtitle mb-2 text-muted">Programación de una web responsive completa</h6>
+                  </div>  
+                </div>                
+                <div class="col-md-4 d-flex justify-content-md-center justify-content-center align-items-center">
+                  <h3 class="card-text mx-5 my-4 fw-bold">{{precioWeb}}€</h3>
+                </div>
+                <div class="col-md-4 d-flex justify-content-md-end justify-content-center align-items-center">
+                  <div>
+                    <p class="mb-0 m-2"><input type="checkbox" formControlName="web" >Añadir</p>
+                  </div>                   
+                </div>
+                @if (formularioHome.get('web')?.value){
+                  <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                      <app-panel></app-panel>
+                    </div>            
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>     
+    <div class="row mt-5">
+      <div class="col d-flex justify-content-center">
+        <h3 class="fw-bold">Precio presupuestado:&nbsp;</h3>
+        <h3 class="fw-bold">{{totalCost}}</h3>
+      </div>    
+    </div>
+  </div>
+  <app-datos-personales-presupuesto></app-datos-personales-presupuesto>
+</form>
+ 
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

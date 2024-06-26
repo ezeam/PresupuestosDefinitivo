@@ -1,0 +1,20 @@
+<div class="modal fade" tabindex="-1" role="dialog" [class.show]="visible" [style.display]="visible ? 'block' : 'none'" (click)="cerrarModal()">
+  <div class="modal-dialog modal-dialog-centered" role="document" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ titulo }}</h5>
+      </div>
+      <div class="modal-body">
+        <p>{{ contenido }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+      
+   

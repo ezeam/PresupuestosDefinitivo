@@ -1,0 +1,39 @@
+input[type="number"] {
+  width: 40px;
+  height: 20px;
+  font-size: 12px;
+}
+
+ /* Oculta la flecha que viene por defecto para aumentar el inputo */
+ input[type="number"]::-webkit-inner-spin-button,
+ input[type="number"]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+ }
+
+ /* Oculta la flecha que viene por defecto para disminuir el input */
+ input[type="number"] {
+   -moz-appearance: textfield;
+   appearance: none;
+ }
+
+ .btn-redondo{
+  width: var(--btn-size, 0.9em);
+  height: var(--btn-size, 0.9em);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0.1px solid black;
+}
+
+.botonInfoPaginas, 
+.botonInfoIdiomas, 
+.botonRestar, 
+.botonSumar{
+  border: none !important;
+  box-shadow: none !important;
+  background-color: transparent;
+}
+ 
