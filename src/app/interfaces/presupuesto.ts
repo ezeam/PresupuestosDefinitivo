@@ -3,6 +3,7 @@ export interface Presupuesto {
   telefono: number;
   email: string;
   fecha: Date; 
-  total: number
+  total: number, 
+  servicios: string[];
 }
 
