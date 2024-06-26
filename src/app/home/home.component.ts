@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder  } from '@angular/forms';
 import { PanelComponent } from '../panel/panel.component';
 import { BudgetService } from '../services/budget.service';
 import { ModalComponent } from '../modal/modal.component';
 import { DatosPersonalesPresupuestoComponent } from '../datos-personales-presupuesto/datos-personales-presupuesto.component';
+import { Presupuesto } from '../interfaces/presupuesto';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,10 @@ import { DatosPersonalesPresupuestoComponent } from '../datos-personales-presupu
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+nuevoPresupuestoNombre = [];
+onSubmit() {
+throw new Error('Method not implemented.');
+}
   precioSeo: number = 300;
   precioAds: number = 400;
   precioWeb: number = 500;
@@ -22,6 +27,7 @@ export class HomeComponent {
   precioParcial: number = 0;
   formularioHome: FormGroup;
   totalCost: number = 0;
+  listaPresupuestos: Presupuesto[] = [];
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.formularioHome = this.fb.group({
@@ -37,6 +43,14 @@ export class HomeComponent {
     this.budgetService.totalCost$.subscribe(cost => {
       this.totalCost = cost;
     });
+
+    this.budgetService.getPresupuestos().subscribe((presupuestos: Presupuesto[]) => {
+      this.listaPresupuestos = presupuestos;
+    }); 
+  }
+
+  addPresupuesto(presupuesto: Presupuesto): void {
+    this.budgetService.addPresupuesto(presupuesto);
   }
 
   private calcularPrecioParcial(): void {

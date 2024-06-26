@@ -14,7 +14,7 @@ import { Presupuesto } from '../interfaces/presupuesto';
 })
 export class DatosPersonalesPresupuestoComponent {
   formularioDatosPersonales: FormGroup;
-  listaPresupuestos: Presupuesto[][] = [];
+  listaPresupuestos: Presupuesto[] = [];
 
   constructor(private fb: FormBuilder, private budgetService: BudgetService) {
     this.formularioDatosPersonales = this.fb.group({
@@ -22,7 +22,7 @@ export class DatosPersonalesPresupuestoComponent {
       telefono: 0,
       email: ""
     });
-    this.budgetService.getPresupuestos().subscribe((presupuestos: any[][]) => {
+    this.budgetService.getPresupuestos().subscribe((presupuestos: Presupuesto[]) => {
       this.listaPresupuestos = presupuestos;
     });
   }
@@ -111,10 +111,9 @@ export class DatosPersonalesPresupuestoComponent {
         fecha: new Date(), 
         total: this.budgetService.calculateTotalCost()    
     }
-    this.listaPresupuestos.push([presupuestoGuardar]);
+    this.listaPresupuestos.push(presupuestoGuardar);
     console.log("Presupuesto creado: ", presupuestoGuardar);
     console.table(this.listaPresupuestos);
-  }
-  
+  }  
 }
 

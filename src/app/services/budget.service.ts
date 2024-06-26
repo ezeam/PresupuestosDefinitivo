@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { Presupuesto } from '../interfaces/presupuesto';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class BudgetService {
   private panelCost = 0;
   private totalCostSubject = new Subject<number>();
 
-  private listaPresupuestosSubject = new BehaviorSubject<any[][]>([]);
+  private listaPresupuestosSubject = new BehaviorSubject<Presupuesto[]>([]);
   listaPresupuestos$ = this.listaPresupuestosSubject.asObservable();
 
   totalCost$ = this.totalCostSubject.asObservable();
@@ -35,11 +36,17 @@ export class BudgetService {
     return totalCost;
   }
 
-  updatePresupuestos(presupuestos: any[][]): void {
+  updatePresupuestos(presupuestos: Presupuesto[]): void {
     this.listaPresupuestosSubject.next(presupuestos);
   }
 
-  getPresupuestos(): Observable<any[][]> {
+  addPresupuesto(presupuesto: Presupuesto): void {
+    const currentPresupuestos = this.listaPresupuestosSubject.getValue();
+    const updatedPresupuestos = [...currentPresupuestos, presupuesto];
+    this.listaPresupuestosSubject.next(updatedPresupuestos);
+  }
+
+  getPresupuestos(): Observable<Presupuesto[]> {
     return this.listaPresupuestos$;
   }
 }
