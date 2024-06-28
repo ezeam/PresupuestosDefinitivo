@@ -51,7 +51,6 @@ export class DatosPersonalesPresupuestoComponent {
       nombrePresupuesto.classList.add("is-invalid");
       if(errorNombre) errorNombre.innerHTML = `No puede haber campos vacíos`;
     }else if(!this.soloTieneLetras(nombrePresupuesto.value)){
-      console.log("¿Entras?");
       nombrePresupuesto.classList.add("is-invalid");
       if(errorNombre) errorNombre.innerHTML = `El campo nombre sólo puede contener letras`;
     }
@@ -119,9 +118,18 @@ export class DatosPersonalesPresupuestoComponent {
         servicios: this.selectedServices    
     }
     this.listaPresupuestos.push(presupuestoGuardar);
-    console.log("Presupuesto creado: ", presupuestoGuardar);
-    console.table(this.listaPresupuestos);
-    console.log("Servicios seleccionados que llegan al presupuesto: ", this.selectedServices);
   }  
+
+  dataSort(){
+    this.listaPresupuestos.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
+  }
+
+  priceSort(){
+    this.listaPresupuestos.sort((a, b) => a.total - b.total);
+  }
+
+  alphabeticalSort(){
+    this.listaPresupuestos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+  }
 }
 

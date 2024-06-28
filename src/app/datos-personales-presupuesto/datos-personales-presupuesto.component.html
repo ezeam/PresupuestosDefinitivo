@@ -4,33 +4,25 @@
       <div class="col-md-8">
         <div class="card mt-2">
           <div class="card-body">
-            <h5 class="card-title text-start">Solicitar presupuesto</h5>
-            <div class="container">
-              <div class="row">
-                <div class="col d-flex justify-content-end">
-                  <button class="btn d-none">Fecha</button>
-                  <button class="btn btn-success btn-block">Precio</button> 
-                  <button class="btn btn-success btn-block">Abc</button>
-                </div>
-              </div>
-            </div>    
+            <h5 class="card-title text-start">Solicitar presupuesto</h5>                
             <div class="row align-items-center mt-3">
-              <div class="col-md-3">
+              <div class="col-lg-3">
                 <label for="nombrePresupuesto" class="form-label"></label>
-                <input type="text" class="form-control mb-2" id="nombrePresupuesto" placeholder="Nombre" value="Ester" />
+                <input type="text" class="form-control mb-2" id="nombrePresupuesto" placeholder="Nombre" value="" />
+                
                 <div id="error-nombre"></div>
               </div>
-              <div class="col-md-3">
+              <div class="col-lg-3">
                 <label for="tlfPresupuesto" class="form-label"></label>
-                <input type="number" class="form-control mb-2" id="tlfPresupuesto" placeholder="Teléfono" value="609856324" />
+                <input type="number" class="form-control mb-2" id="tlfPresupuesto" placeholder="Teléfono" value="" />
                 <div id="error-tlf"></div>
               </div>
-              <div class="col-md-3">
+              <div class="col-lg-3">
                 <label for="emailPresupuesto" class="form-label"></label>
-                <input type="email" class="form-control mb-2" id="emailPresupuesto" placeholder="E-mail" value="sjdv@sjdf.com"/>
+                <input type="email" class="form-control mb-2" id="emailPresupuesto" placeholder="E-mail" value=""/>
                 <div id="error-email"></div>
               </div>
-              <div class="col-md-3">
+              <div class="col-lg-3">
                 <button type="submit" class="btn btn-success btn-block" (click)="submitFormDatosPresupuesto()">Solicitar presupuesto</button> 
               </div>
             </div>
@@ -42,11 +34,20 @@
   <div class="container">    
     <div class="row">
       <div class="col d-flex align-items-center justify-content-center">
-        <h5>Presupuestos en curso:</h5>
+        <h3 class="fw-bold">Presupuestos en curso:</h3>
       </div>
     </div>
   </div>    
-  
+  <div class="container mb-5">
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <img src="../../../assets/lupa.svg" class="icon me-3" alt="icono">
+        <button class="btn-text-only btn-success btn-block me-3" (click)="dataSort()">Fecha</button>
+        <button class="btn-text-only btn-success btn-block me-3" (click)="priceSort()">Precio</button> 
+        <button class="btn-text-only btn-success btn-block" (click)="alphabeticalSort()">Nombre</button>
+      </div>
+    </div>
+  </div>
     
   @for (presupuesto of listaPresupuestos; track presupuesto) {
     <div class="container mt-5 mb-5">
@@ -62,7 +63,7 @@
                 </div>
                 <div class="col-md-4">
                   <p class="card-text">Servicios contratados:</p>
-                  @for(servicio of selectedServices; track servicio){
+                  @for(servicio of presupuesto.servicios; track servicio){                    
                     <ul>
                       <li>{{servicio}}</li>
                     </ul>

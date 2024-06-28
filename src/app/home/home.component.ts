@@ -68,12 +68,12 @@ export class HomeComponent {
     if (this.formularioHome.get('web')?.value) {
       this.precioParcial += this.precioWeb;
       this.selectedServices.push('Web');
+    }else {
+      this.budgetService.updatePanelCost(0); // Reinicia el coste del panel
     }
 
     this.precioTotalHome = this.precioParcial;
     this.budgetService.updateHomeCost(this.precioParcial);
-    
-    console.log("Servicios añadidos: ", this.selectedServices);
   }
 
   submitFormDatosPresupuesto() {
@@ -81,8 +81,7 @@ export class HomeComponent {
     let tlfInput = <HTMLInputElement>document.getElementById("tlfPresupuesto");
     let emailInput = <HTMLInputElement>document.getElementById("emailPresupuesto");
 
-    this.crearPresupuesto(nombreInput.value, +(tlfInput.value), emailInput.value);
-    
+    this.crearPresupuesto(nombreInput.value, +(tlfInput.value), emailInput.value);    
   }
 
   crearPresupuesto(nombre: string, telefono: number, email: string): void {
@@ -97,9 +96,5 @@ export class HomeComponent {
 
     this.listaPresupuestos.push(presupuestoGuardar);
     this.budgetService.addPresupuesto(presupuestoGuardar);
-    console.log("Presupuesto creado: ", presupuestoGuardar);
-    console.table(this.listaPresupuestos);
   }
-
-  
 }

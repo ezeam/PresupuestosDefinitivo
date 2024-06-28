@@ -22,20 +22,17 @@ export class BudgetService {
 
   updateHomeCost(cost: number): void {
     this.homeCost = cost;
-    console.log("Coste actualizado de la home", cost);
     this.calculateTotalCost();
   }
 
   updatePanelCost(cost: number): void {
     this.panelCost = cost;
-    console.log("Coste actualizado del panel", cost);
     this.calculateTotalCost();
   }
 
   calculateTotalCost(): number {
     const totalCost = this.homeCost + this.panelCost;
     this.totalCostSubject.next(totalCost);
-    console.log("Coste TOTAL", totalCost);
     return totalCost;
   }
 
@@ -58,7 +55,6 @@ export class BudgetService {
   }
 
   getServiciosSeleccionados(): Observable<string[]> {
-    console.log("Servicios que llegan a la funcion getServiciosSeleccionados", this.serviciosSeleccionados$);
     return this.serviciosSeleccionados$;
   }
 }

@@ -1,0 +1,14 @@
+.btn-text-only {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
